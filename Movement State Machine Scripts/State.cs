@@ -19,7 +19,7 @@ public class State
     public InputAction attackAction;
 
     public State(Character _character, StateMachine _stateMachine)
-	{
+    {
         character = _character;
         stateMachine = _stateMachine;
 
@@ -35,7 +35,7 @@ public class State
 
     public virtual void Enter()
     {
-		Debug.Log("Enter State: "+this.ToString());
+        Debug.Log("Enter State: "+this.ToString());
     }
 
     public virtual void HandleInput()
@@ -54,4 +54,3 @@ public class State
     {
     }
 }
-

@@ -5,14 +5,14 @@ public class SprintJumpState:State
     float jumpTime;
 
     public SprintJumpState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
-	{
-		character = _character;
-		stateMachine = _stateMachine;
-	}
+    {
+        character = _character;
+        stateMachine = _stateMachine;
+    }
 
     public override void Enter()
-	{
-		base.Enter();
+    {
+        base.Enter();
         character.animator.applyRootMotion = true;
         timePassed = 0f;
         character.animator.SetTrigger("sprintJump");
@@ -20,18 +20,18 @@ public class SprintJumpState:State
         jumpTime = 1f;
     }
 
-	public override void Exit()
-	{
-		base.Exit();
+    public override void Exit()
+    {
+        base.Exit();
         character.animator.applyRootMotion = false;
     }
 
-	public override void LogicUpdate()
+    public override void LogicUpdate()
     {
         
         base.LogicUpdate();
-		if (timePassed> jumpTime)
-		{
+        if (timePassed> jumpTime)
+        {
             character.animator.SetTrigger("move");
             stateMachine.ChangeState(character.sprinting);
         }
@@ -41,4 +41,3 @@ public class SprintJumpState:State
 
 
 }
-

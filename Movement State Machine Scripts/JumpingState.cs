@@ -11,16 +11,16 @@ public class JumpingState:State
     Vector3 airVelocity;
 
     public JumpingState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
-	{
-		character = _character;
-		stateMachine = _stateMachine;
-	}
+    {
+        character = _character;
+        stateMachine = _stateMachine;
+    }
 
     public override void Enter()
-	{
-		base.Enter();
+    {
+        base.Enter();
 
-		grounded = false;
+        grounded = false;
         gravityValue = character.gravityValue;
         jumpHeight = character.jumpHeight;
         playerSpeed = character.playerSpeed;
@@ -29,20 +29,20 @@ public class JumpingState:State
         character.animator.SetFloat("speed", 0);
         character.animator.SetTrigger("jump");
         Jump();
-	}
-	public override void HandleInput()
-	{
-		base.HandleInput();
+    }
+    public override void HandleInput()
+    {
+        base.HandleInput();
 
         input = moveAction.ReadValue<Vector2>();
     }
 
-	public override void LogicUpdate()
+    public override void LogicUpdate()
     {
         base.LogicUpdate();
 
         if (grounded)
-		{
+        {
             stateMachine.ChangeState(character.landing);
         }
     }
@@ -50,8 +50,8 @@ public class JumpingState:State
     public override void PhysicsUpdate()
     {
         base.PhysicsUpdate();
-		if (!grounded)
-		{
+        if (!grounded)
+        {
 
             velocity = character.playerVelocity;
             airVelocity = new Vector3(input.x, 0, input.y);
@@ -73,4 +73,3 @@ public class JumpingState:State
     }
 
 }
-

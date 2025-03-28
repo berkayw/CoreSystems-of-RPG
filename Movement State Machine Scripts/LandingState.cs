@@ -6,14 +6,14 @@ public class LandingState:State
     float landingTime;
 
     public LandingState(Character _character, StateMachine _stateMachine) : base(_character, _stateMachine)
-	{
-		character = _character;
-		stateMachine = _stateMachine;
-	}
+    {
+        character = _character;
+        stateMachine = _stateMachine;
+    }
 
     public override void Enter()
-	{
-		base.Enter();
+    {
+        base.Enter();
         timePassed = 0f;
         character.animator.SetTrigger("land");
         landingTime = 0.5f;
@@ -23,8 +23,8 @@ public class LandingState:State
     {
         
         base.LogicUpdate();
-		if (timePassed> landingTime)
-		{
+        if (timePassed> landingTime)
+        {
             character.animator.SetTrigger("move");
             stateMachine.ChangeState(character.standing);
         }
@@ -34,4 +34,3 @@ public class LandingState:State
 
 
 }
-

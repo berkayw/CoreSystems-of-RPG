@@ -56,4 +56,3 @@ public class AttackState : State
         character.animator.applyRootMotion = false;
     }
 }
-

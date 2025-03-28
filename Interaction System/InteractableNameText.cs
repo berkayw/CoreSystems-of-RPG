@@ -5,46 +5,46 @@ using TMPro;
 
 public class InteractableNameText : MonoBehaviour
 {
-	TextMeshProUGUI text;
+    TextMeshProUGUI text;
 
-	Transform cameraTransform;
-	void Start()
-	{
-		text = GetComponentInChildren<TextMeshProUGUI>();
-		cameraTransform = Camera.main.transform;
-		HideText();
-	}
-	public void ShowText(Interactable interactable)
-	{ 
-		if (interactable is InteractableChest)
-		{
-			if (((InteractableChest) interactable).isOpen)
-			{
+    Transform cameraTransform;
+    void Start()
+    {
+        text = GetComponentInChildren<TextMeshProUGUI>();
+        cameraTransform = Camera.main.transform;
+        HideText();
+    }
+    public void ShowText(Interactable interactable)
+    { 
+        if (interactable is InteractableChest)
+        {
+            if (((InteractableChest) interactable).isOpen)
+            {
                 text.text = interactable.interactableName + "\n [E] Close";
-			}
-			else
-			{
+            }
+            else
+            {
                 text.text = interactable.interactableName + "\n [E] Open";
             }
         }
-		else if(interactable is InteractableNPC)
-		{
+        else if(interactable is InteractableNPC)
+        {
             text.text = interactable.interactableName + "\n [E] Speak";
         }
-		else
-		{
+        else
+        {
             text.text = interactable.interactableName;
         }
 
-	}
+    }
 
-	public void HideText()
-	{
-		text.text = "";
-	}
+    public void HideText()
+    {
+        text.text = "";
+    }
 
-	public void SetInteractableNamePosition(Interactable interactable)
-	{
+    public void SetInteractableNamePosition(Interactable interactable)
+    {
         if (interactable.TryGetComponent(out BoxCollider boxCollider))
         {
             transform.position = interactable.transform.position + Vector3.up * boxCollider.bounds.size.y;
@@ -54,11 +54,11 @@ public class InteractableNameText : MonoBehaviour
         {
             transform.position = interactable.transform.position + Vector3.up * capsCollider.height;
             transform.LookAt(2 * transform.position - cameraTransform.position);
-		}
-		else
-		{
-			print("Error, no collider found!");
-		}
+        }
+        else
+        {
+            print("Error, no collider found!");
+        }
       
 
     }
